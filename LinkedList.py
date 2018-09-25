@@ -53,6 +53,25 @@ class LinkedList:
             i +=1
         return curr_head.get_value()
 
+    def get_next_node(self):
+        return self.head.next
+
+    def set_next_node(self, value):
+        self.next = value
+
+    def reverse(self):
+        pre = None
+        curr_node = self.head
+        next = None
+        while curr_node != None:
+            next = curr_node.next
+            curr_node.next = pre
+            pre = curr_node
+            curr_node = next
+        self.head = pre
+            
+        
+
 if __name__ == '__main__':
     ll = LinkedList()
     ll.addNode(1)
@@ -61,3 +80,5 @@ if __name__ == '__main__':
     print ll.get_size() 
     print ll.traverse()
     print ll.get_value_by_index(1)
+    ll.reverse()
+    print ll.traverse()
