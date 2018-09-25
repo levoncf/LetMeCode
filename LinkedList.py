@@ -5,7 +5,8 @@ class Node:
     def __init__(self, value = None):
         self.value = value
         self.next = None
-    
+    def get_value(self):
+        return self.value
 
 class LinkedList:
     def __init__(self, head = None):
@@ -37,13 +38,26 @@ class LinkedList:
     :return:
     """
     def traverse(self):
-        node = self
-        while node != None:
-            print node.value
-            node = node.next
-    
+        curr_head = self.head
+        node_list = []
+        while curr_head != None:
+            node_list.append(curr_head.get_value())
+            curr_head = curr_head.next
+        return node_list
+
+    def get_value_by_index(self, index):
+        curr_head = self.head
+        i = 0
+        while i < index:
+            curr_head = curr_head.next
+            i +=1
+        return curr_head.get_value()
+
 if __name__ == '__main__':
     ll = LinkedList()
     ll.addNode(1)
     ll.addNode(2)
+    ll.addNode(8)
     print ll.get_size() 
+    print ll.traverse()
+    print ll.get_value_by_index(1)
